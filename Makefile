@@ -1,8 +1,11 @@
 flatpak-builder = flatpak run org.flatpak.Builder
 # flatpak-builder = flatpak-builder
 
+SASSC_OPT = -M -a -t compact
+
 build:
-	./parse-sass.sh
+	sassc $(SASSC_OPT) gtk-3.20/gtk.scss gtk-3.20/gtk.css
+	sassc $(SASSC_OPT) gnome-shell/gnome-shell.scss gnome-shell/gnome-shell.css
 
 install: install-theme install-flatpak
 
@@ -18,7 +21,7 @@ system-install:
 		cp -r assets gtk.css /usr/local/share/themes/FlatWaita-16/gtk-3.0/; \
 	else \
 		echo; \
-		echo "Please run 'make deploy' with 'sudo'."; \
+		echo "Please run 'make system-install' with 'sudo'."; \
 	fi
 
 .PHONY: build install install-theme install-flatpak system-install

@@ -5,7 +5,7 @@
 // - if you need to inverse a color function use the @if directive to match for dark $variant
 
 $variant: 'dark';
-@import 'base16';
+@import '../base16';
 @import 'colors';
 @import 'drawing';
 @import 'common';

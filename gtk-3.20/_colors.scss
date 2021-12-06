@@ -1,11 +1,12 @@
-$base_color: lighten($base01, 2%);
+$base_color: lighten($base01, 0%);
 $text_color: $base06;
 $bg_color: $base02;
+$bg_color: darken($base01, 4%);
 // $bg_color: darken($base01, 2%);
 $fg_color: $base05;
 
 $selected_fg_color: $base06;
-$selected_bg_color: darken($base02, 0%);
+$selected_bg_color: darken($base02, 2%);
 $selected_borders_color: darken($selected_bg_color, 30%);
 $borders_color: darken($bg_color, 10%);
 $alt_borders_color: darken($bg_color, 18%);
