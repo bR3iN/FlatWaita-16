@@ -3,25 +3,34 @@ flatpak-builder = flatpak run org.flatpak.Builder
 
 SASSC_OPT = -M -a -t compact
 
-build:
+
+build: gtk-3.20/gtk.css gnome-shell/gnome-shell.css
+
+gtk-3.20/gtk.css: base16.scss
 	sassc $(SASSC_OPT) gtk-3.20/gtk.scss gtk-3.20/gtk.css
+	cat gtk-3.20/patches/* >> gtk-3.20/gtk.css
+
+gnome-shell/gnome-shell.css: base16.scss
 	sassc $(SASSC_OPT) gnome-shell/gnome-shell.scss gnome-shell/gnome-shell.css
 
-install: install-theme install-flatpak
+clean:
+	rm gtk-3.20/gtk.css
+	rm gnome-shell/gnome-shell.css
 
-install-theme: build
-	./reset-theme.sh
+all: set-theme install-flatpak
+
+set-theme: build
+	./set-theme.sh
 
 install-flatpak: build
 	$(flatpak-builder) --user --install --force-clean build org.gtk.Gtk3theme.FlatWaita-16.yaml
 
 system-install:
-	if [ "$$UID" -eq 0 ]; then \
-		mkdir -p /usr/local/share/themes/FlatWaita-16/gtk-3.0; \
-		cp -r assets gtk.css /usr/local/share/themes/FlatWaita-16/gtk-3.0/; \
+	@if [ "$$UID" -eq 0 ]; then \
+		mkdir -p /usr/share/themes/FlatWaita-16/; \
+		cp -r gnome-shell gtk-3.20 /usr/share/themes/FlatWaita-16/; \
 	else \
-		echo; \
 		echo "Please run 'make system-install' with 'sudo'."; \
 	fi
 
-.PHONY: build install install-theme install-flatpak system-install
+.PHONY: clean build all set-theme install-flatpak system-install
