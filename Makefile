@@ -17,15 +17,17 @@ clean:
 	rm gtk-3.20/gtk.css
 	rm gnome-shell/gnome-shell.css
 
-all: set-theme install-flatpak
-
 set-theme: build
 	./set-theme.sh
 
 install-flatpak: build
-	$(flatpak-builder) --user --install --force-clean build org.gtk.Gtk3theme.FlatWaita-16.yaml
+	@if [ -n "$$TOOLBOX_PATH" ]; then\
+		flatpak-spawn --host $(flatpak-builder) --user --install --force-clean build org.gtk.Gtk3theme.FlatWaita-16.yaml; \
+	else \
+		$(flatpak-builder) --user --install --force-clean build org.gtk.Gtk3theme.FlatWaita-16.yaml; \
+	fi
 
-system-install:
+system-install: build
 	@if [ "$$UID" -eq 0 ]; then \
 		mkdir -p /usr/share/themes/FlatWaita-16/; \
 		cp -r gnome-shell gtk-3.20 /usr/share/themes/FlatWaita-16/; \
