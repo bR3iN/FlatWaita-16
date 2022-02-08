@@ -1,0 +1,7 @@
+.nautilus-window {
+    border-radius: 7px 7px 0px 0px;
+}
+
+.nautilus-window decorations {
+    background: inherit;
+}
