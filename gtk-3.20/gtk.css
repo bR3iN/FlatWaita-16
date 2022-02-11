@@ -2039,6 +2039,6 @@ read if you used those and something break with a version upgrade you're on your
     border-radius: 7px 7px 0px 0px;
 }
 
-.nautilus-window decorations {
+.nautilus-window decoration {
     background: inherit;
 }
