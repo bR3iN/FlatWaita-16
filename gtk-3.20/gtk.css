@@ -2035,10 +2035,10 @@ read if you used those and something break with a version upgrade you're on your
 @define-color content_view_bg #2A2A2A;
 /* Very contrasty background for text views (@theme_text_color foreground) */
 @define-color text_view_bg #1b1b1b;
-.nautilus-window {
+window {
     border-radius: 7px 7px 0px 0px;
 }
 
-.nautilus-window decoration {
+window decoration {
     background: inherit;
 }
