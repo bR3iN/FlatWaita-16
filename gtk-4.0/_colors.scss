@@ -1,0 +1,74 @@
+// When color definition differs for dark and light variant
+// it gets @if ed depending on $variant
+
+$base_color: $base01;
+$text_color: $base04;
+$bg_color: $base00;
+$fg_color: $base04;
+
+$selected_fg_color: $base06;
+$selected_bg_color: darken($base02, 2%);
+$selected_borders_color: darken($selected_bg_color, 30%);
+$borders_color: darken($bg_color, 10%);
+$alt_borders_color: darken($bg_color, 18%);
+$borders_edge: transparentize($fg_color, 0.93);
+$link_color: lighten($selected_bg_color, 20%);
+$link_visited_color: lighten($selected_bg_color, 10%);
+$top_hilight: $borders_edge;
+$dark_fill: mix($borders_color, $bg_color, 50%);
+$headerbar_bg_color: darken($bg_color, 3%);
+$menu_color: $base_color;
+$menu_selected_color: darken($bg_color, 8%);
+
+$scrollbar_bg_color: mix($base_color, $bg_color, 50%);
+$scrollbar_slider_color: mix($fg_color, $bg_color, 60%);
+$scrollbar_slider_hover_color: mix($fg_color, $bg_color, 80%);
+$scrollbar_slider_active_color: lighten($selected_bg_color, 10%);
+
+$warning_color: $base09;
+$error_color: $base08;
+$success_color: $base0B;
+$destructive_color: darken($base08, 10%);
+
+$osd_fg_color: $fg_color;
+$osd_text_color: white;
+$osd_bg_color: transparentize(darken($bg_color, 10%),0.3);
+$osd_insensitive_bg_color: transparentize(mix($osd_fg_color, opacify($osd_bg_color, 1), 10%), 0.5);
+$osd_insensitive_fg_color: mix($osd_fg_color, opacify($osd_bg_color, 1), 50%);
+$osd_borders_color: transparentize(black, 0.3);
+
+$sidebar_bg_color: mix($bg_color, $base_color, 50%);
+
+$tooltip_borders_color: transparentize(white, 0.9);
+$shadow_color: transparentize(black, 0.9);
+
+$drop_target_color: $base0C;
+
+//insensitive state derived colors
+$insensitive_fg_color: mix($fg_color, $bg_color, 50%);
+$insensitive_bg_color: mix($bg_color, $base_color, 60%);
+$insensitive_borders_color: mix($borders_color, $bg_color, 80%);
+
+//colors for the backdrop state, derived from the main colors.
+$backdrop_base_color: lighten($base_color, 1%);
+$backdrop_text_color: mix($text_color, $backdrop_base_color, 80%);
+$backdrop_bg_color: $bg_color;
+$backdrop_fg_color: mix($fg_color, $backdrop_bg_color, 50%);
+$backdrop_insensitive_color: lighten($backdrop_bg_color, 15%);
+$backdrop_selected_fg_color: $backdrop_text_color;
+$backdrop_borders_color: mix($borders_color, $bg_color, 80%);
+$backdrop_dark_fill: mix($backdrop_borders_color, $backdrop_bg_color, 35%);
+
+//special cased widget colors
+$suggested_bg_color: $selected_bg_color;
+$suggested_border_color: $selected_borders_color;
+$progress_bg_color: $selected_bg_color;
+$progress_border_color: $selected_borders_color;
+$checkradio_bg_color: $selected_bg_color;
+$checkradio_fg_color: $selected_fg_color;
+$checkradio_borders_color: darken($selected_bg_color,20%);
+$switch_bg_color: $selected_bg_color;
+$switch_borders_color: darken($switch_bg_color,30%);
+$focus_border_color: transparentize($selected_bg_color, 0.3);
+$alt_focus_border_color: transparentize(white,0.7);
+$dim_label_opacity: 0.55;
